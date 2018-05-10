@@ -6,7 +6,7 @@
     export default {
         initData () {
             return {
-                msg: 'world'
+                msg: 'ouhzh'
             };
         }
     }
