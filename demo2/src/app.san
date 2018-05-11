@@ -1,0 +1,59 @@
+<template>
+<div>
+    <div>
+        <input value="{=name=}" placeholder="姓名" type="text" on-input="setname">
+        <input value="{=age=}" placeholder="年龄" type="number" on-input="setage">
+        <input value="{=desc=}" placeholder="描述" type="text" on-input="setdesc">
+    </div>
+    <p>
+       信息: <button on-click="clearInfo">移除信息</button>
+    </p>
+    <p>姓名:<span>{{person.name}}</span></p>
+    <p>年龄:<span>{{person.age}}</span></p>
+    <p>描述:<span>{{person.desc}}</span></p>
+</div>
+</template>
+
+<script>
+   import {DataTypes} from 'san'; 
+   export default {
+       initData(){
+           return {
+               person:{
+               name:undefined,
+               age:undefined,
+               desc:undefined
+               }
+           };
+       },
+       dataTypes:{
+           person : DataTypes.shape({
+                name:DataTypes.string,
+                age:DataTypes.number,
+                desc:DataTypes.string
+           })
+       },
+       clearInfo(){
+           this.data.set("person",{
+               name:undefined,
+               age:undefined,
+               desc:undefined
+           });
+           this.data.set("name",undefined);
+           this.data.set("age",undefined);
+           this.data.set("desc",undefined);
+       },
+       setname(){
+           this.data.set("person.name", this.data.get("name"));
+       },
+       setage(){
+           this.data.set("person.age", isNaN(this.data.get("age")) ? undefined : Number(this.data.get("age")));
+       },
+       setdesc(){
+           this.data.set("person.desc", this.data.get("desc"));
+       }
+   };
+</script>
+
+<style>
+</style>
