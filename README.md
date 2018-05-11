@@ -1,14 +1,12 @@
 ## Welcome to ouhuizhi GitHub Pages
 
-
 ### 作业1
-    [demo1]
+[demo1](https://ouhuizhi.github.io/San/demo1/dist/)
+
+
 ### 作业2
-    [demo2]
+[demo2](https://ouhuizhi.github.io/San/demo2/dist/)
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ouhuizhi/San/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 
