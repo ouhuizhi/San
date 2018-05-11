@@ -1,0 +1,27 @@
+<template>
+<div>
+    <div style="{{divstyle}}" on-click="changeStyle"></div>
+</div>
+</template>
+
+<script>
+   import {DataTypes} from 'san'; 
+   export default {
+       initData(){
+           return {
+               divstyle:'background:red;width:100px;height:100px;'
+           };
+       },
+       changeStyle(){
+            let style = this.data.get('divstyle');
+            if(style.indexOf('red') > -1){
+                this.data.set('divstyle','background:blue;width:100px;height:100px;');
+            }else{
+                this.data.set('divstyle','background:red;width:100px;height:100px;');
+           }  
+       }
+   };
+</script>
+
+<style>
+</style>
