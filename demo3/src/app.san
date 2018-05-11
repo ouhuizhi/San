@@ -1,0 +1,73 @@
+<template>
+<div>
+    <p>
+        <input type="text" value="{=name=}" placeholder="姓名" >
+        <button on-click="addPerson">添加</button>
+    </p>
+    <table>
+        <tr>
+            <th>姓名</th>
+            <th>审核状态</th>
+            <th>操作</th>
+        </tr>
+       
+        <tr s-for="p, index in persons" title="{{p.name}}">
+            <td>{{p.name}}</td>
+            <td>{{p.audit}}</td>
+            <td>
+                <button san-if="p.isAudit" on-click="delPerson(index)">删除</button>
+                <button san-if="!p.isAudit" on-click="auditPerson(index)">审核</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</template>
+
+<script>
+   import {DataTypes} from 'san'; 
+   export default {
+       initData(){
+           return {
+               persons:[{
+               name:'张三',
+               audit:'待审核',
+               isAudit:false
+               },{
+               name:'李四',
+               audit:'合格',
+               isAudit:true
+               },{
+               name:'王五',
+               audit:'不合格',
+               isAudit:true
+               }]
+           };
+       },
+       addPerson(){
+         this.data.push('persons',{
+             name:this.data.get('name'),
+             audit:'待审核',
+             isAudit:false
+         });  
+       },
+       auditPerson(index){
+            this.data.set('persons['+index+'].isAudit', true);
+            this.data.set('persons['+index+'].audit', '合格');
+       },
+       delPerson(index){
+         this.data.removeAt('persons', index);
+       }
+   };
+</script>`
+
+<style>
+table,tr,td,th{
+    border:1px solid #fff;
+    color:#555;
+    background-color:#f1f1f1;
+    text-align:center;
+}
+td{
+    min-width:80px;
+}
+</style>
